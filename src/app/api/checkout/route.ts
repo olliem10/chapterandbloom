@@ -93,7 +93,14 @@ function resolveLineItem(raw: CheckoutRequestItem): Stripe.Checkout.SessionCreat
 export async function POST(request: Request) {
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
-    console.error("STRIPE_SECRET_KEY is not set — cannot create a Checkout Session.");
+    // Never logs the key itself — VERCEL_ENV/NODE_ENV are plain context
+    // labels ("production"/"preview"/"development"), not secrets. This is
+    // here purely so Vercel's Function Logs can show which environment
+    // scope an invocation actually ran under, since that's the detail we
+    // can't see from outside the deployment.
+    console.error(
+      `STRIPE_SECRET_KEY is not set for this invocation (VERCEL_ENV=${process.env.VERCEL_ENV ?? "unset"}, NODE_ENV=${process.env.NODE_ENV ?? "unset"}) — cannot create a Checkout Session.`,
+    );
     return NextResponse.json(
       { error: "Checkout isn't configured on this server yet. Please contact us to complete your order." },
       { status: 500 },
