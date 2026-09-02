@@ -5,6 +5,7 @@ import { CartProvider } from "@/lib/cart-context";
 import { SiteHeader } from "@/components/nav/SiteHeader";
 import { SiteFooter } from "@/components/footer/SiteFooter";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
+import { GenreTransitionProvider } from "@/components/genre-transition/GenreTransitionProvider";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -55,11 +56,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to main content
         </a>
         <CartProvider>
-          <SiteHeader />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          <GenreTransitionProvider>
+            <SiteHeader />
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </GenreTransitionProvider>
         </CartProvider>
       </body>
     </html>

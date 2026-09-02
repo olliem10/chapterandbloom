@@ -18,6 +18,7 @@ export const PRODUCTS: Product[] = [
     tier: "standard",
     featured: true,
     genreSelectable: true,
+    stripeLink: "https://buy.stripe.com/4gMbIU01e4YE8jWghW5Ne00",
   },
   {
     id: "bulk-standard",
@@ -32,6 +33,7 @@ export const PRODUCTS: Product[] = [
     tier: "standard",
     featured: false,
     genreSelectable: true,
+    stripeLink: "https://buy.stripe.com/5kQbIU3dqaiYeIk3va5Ne01",
   },
   {
     id: "professional",
@@ -46,20 +48,7 @@ export const PRODUCTS: Product[] = [
     tier: "professional",
     featured: true,
     genreSelectable: true,
-  },
-  {
-    id: "bulk-professional",
-    slug: "bulk-professional",
-    name: "Bulk Professional",
-    priceGBP: 17.99,
-    tagline: "The fuller bundle.",
-    description:
-      "Everything in Professional, plus a bookmark — a well-rounded gift with a little more inside.",
-    includedItems: ["Book", "3 Stickers", "Pen", "Bookmark", "Pin Badge"],
-    bulk: true,
-    tier: "professional",
-    featured: false,
-    genreSelectable: true,
+    stripeLink: "https://buy.stripe.com/eVq14g9BO2Qwbw84ze5Ne02",
   },
   {
     id: "premium",
@@ -74,6 +63,7 @@ export const PRODUCTS: Product[] = [
     tier: "premium",
     featured: true,
     genreSelectable: true,
+    stripeLink: "https://buy.stripe.com/aFa28k29m2Qw9o07Lq5Ne03",
   },
   {
     id: "bulk-premium",
@@ -88,6 +78,7 @@ export const PRODUCTS: Product[] = [
     tier: "premium",
     featured: false,
     genreSelectable: true,
+    stripeLink: "https://buy.stripe.com/7sYcMYeW876Mas4d5K5Ne04",
   },
 ];
 

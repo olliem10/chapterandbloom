@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { BookOpen, Check, Minus, Plus, Star, Truck } from "lucide-react";
+import { BookOpen, Check, CreditCard, Minus, Plus, Star, Truck } from "lucide-react";
 import type { CartGiftOptions, Genre, Product } from "@/lib/types";
 import { DEFAULT_GIFT_OPTIONS } from "@/lib/types";
 import { getGenreBySlug } from "@/lib/genres";
@@ -126,7 +126,30 @@ export function ProductDetailClient({ product, related }: { product: Product; re
             {added ? `${product.name} added to your cart.` : ""}
           </p>
 
-          <div className="mt-2 flex items-center gap-2 text-sm text-ink-70">
+          {product.stripeLink ? (
+            <div className="mt-4 rounded-card border border-border bg-paper p-4">
+              <a
+                href={product.stripeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-control border border-ink px-5 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper sm:w-auto"
+              >
+                <CreditCard className="h-4 w-4" aria-hidden="true" />
+                Buy Now with Stripe — {formatGBP(product.priceGBP)}
+              </a>
+              <p className="mt-2 text-xs text-ink-50">
+                Pays for this exact bundle at {formatGBP(product.priceGBP)} through Stripe&rsquo;s secure
+                checkout. Your genre and any gift message won&rsquo;t carry across automatically &mdash;
+                add them to the note on the Stripe payment page, or email us at{" "}
+                <a href="mailto:chapterandbloom@outlook.com" className="underline decoration-2 underline-offset-2">
+                  chapterandbloom@outlook.com
+                </a>{" "}
+                after paying.
+              </p>
+            </div>
+          ) : null}
+
+          <div className="mt-4 flex items-center gap-2 text-sm text-ink-70">
             <Truck className="h-4 w-4" aria-hidden="true" />
             UK shipping in 2&ndash;3 working days.
           </div>

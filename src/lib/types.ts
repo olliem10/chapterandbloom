@@ -22,6 +22,8 @@ export interface Product {
   featured: boolean;
   /** No fixed book inventory exists yet — customers choose a genre preference instead of a specific title. */
   genreSelectable: boolean;
+  /** Real Stripe Payment Link for this exact package. Never invent one — omit if not supplied. */
+  stripeLink?: string;
 }
 
 export interface CartGiftOptions {

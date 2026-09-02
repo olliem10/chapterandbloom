@@ -37,7 +37,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
       "@type": "Offer",
       priceCurrency: "GBP",
       price: product.priceGBP.toFixed(2),
-      url: `https://chapterandbloom.co.uk/shop/${product.slug}`,
+      url: product.stripeLink ?? `https://chapterandbloom.co.uk/shop/${product.slug}`,
     },
   };
 
